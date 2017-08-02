@@ -1,0 +1,44 @@
+ ------
+ Maven 2 IDEA UI Designer Plugin
+ ------
+
+How to use
+
+ Brief examples on how to use the ideauidesigner:javac2 goal.
+ 
+* How to configure ideauidesigner:javac2 using pom.xml
+
+-------------------
+<project>
+  ...
+  <packaging>jar</packaging>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>ideauidesigner-maven-plugin</artifactId>
+        <executions>
+           <execution>
+              <goals>
+                 <goal>javac2</goal>
+              </goals>
+           </execution>
+        </executions>
+        <configuration>
+          <fork>true</fork>
+          <debug>true</debug>
+          <failOnError>true</failOnError>
+          ...
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+-------------------
+
+ The goal is tied to the process-classes phase, and will byte code manipulate your classes after they
+ have been built. Currently the goal is not very flexible. It assumes your *.form files are
+ located under your source directory (that's where IDEA puts them), and assumes your built
+ classes are located in your output directory. 
+
